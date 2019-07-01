@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  wordpress:
+    image: arm32v7/wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+    volumes:
+      - ./html:/var/www/html
+  mysql:
+    image: hypriot/rpi-mysql
+    restart: always
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+    - ./wpdb:/var/lib/mysql/wordpress
