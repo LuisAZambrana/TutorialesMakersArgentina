@@ -13,7 +13,7 @@ import sys
 import RPi.GPIO as gpio
 import subprocess
 
-ownner == tuid
+owner == tuid
 
 @bot.message_handler(func=lambda message: message.text.lower() == '18on' and message.chat.id == owner)
 def prende_18(message):
