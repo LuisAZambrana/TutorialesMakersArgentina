@@ -1,0 +1,34 @@
+1 - Como somos organizados tenemos una carpeta que se llama ContenedoresDocker/Wordpress
+2 - Dentro creamos el archivo docker-composer.yml
+Dentro del archivo:
+
+version: '2'
+
+services:
+
+  wordpress:
+    image: arm32v7/wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+    volumes:
+      - ./html:/var/www/html
+  mysql:
+    image: hypriot/rpi-mysql
+    restart: always
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+    - ./wpdb:/var/lib/mysql/wordpress
+
+3 - Levantamos el docker con el comando: 
+docker-compose up -d
+
+4 - docker ps para ver que esta funcionando.
+
+5 - Si necesitas una forma mas grafica para verlo usa #Portainer
+https://makersargentina.com.ar/docker-de-manera-intuitiva-y-grafica-gracias-a-portainer/
